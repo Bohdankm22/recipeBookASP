@@ -18,9 +18,9 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/">Home</a></li>
-                        <li><a runat="server" href="~/Recipes">Recipes</a></li>
-                        <li><a runat="server" href="~/AddRecipe">Add recipe</a></li>
-                        <li><a runat="server" href="~/Search">Search</a></li>
+                        <li><a runat="server" href="~/Recipes.aspx">Recipes</a></li>
+                        <li><a runat="server" href="~/AddRecipe.aspx">Add recipe</a></li>
+                        <li><a runat="server" href="~/Search.aspx">Search</a></li>
                     </ul>
                 </div>
             </div>
