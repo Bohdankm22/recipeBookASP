@@ -7,8 +7,8 @@
     <title></title>
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
+    <link href="~/content/bootstrap.css" rel="stylesheet" />
     <link href="~/chef.png" rel="shortcut icon" type="image/x-icon" />
-
 </head>
 <body>
     <form id="form1" runat="server">
