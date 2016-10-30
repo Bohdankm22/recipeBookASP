@@ -9,11 +9,20 @@ using System.Web;
 public class Recipe
 {
     public string Name { get; set; }
-    public string Description { get; set; }
+    public string SubmitedBy { get; set; }
+    public string Category { get; set; }
+    public double PreparationTime { get; set; }
+    public int ServingsNumber { get; set; }
+    public List<Ingredient> IngredientsList { get; set; }
 
-    public Recipe(string name, string description)
+    public Recipe (string Name, string SubmitedBy, string Category, 
+        double PreparationTime, int ServingsNumber, List<Ingredient> IngredientsList)
     {
-        Name = name;
-        Description = description;
+        this.Name = Name;
+        this.SubmitedBy = SubmitedBy;
+        this.Category = Category;
+        this.PreparationTime = PreparationTime;
+        this.ServingsNumber = ServingsNumber;
+        this.IngredientsList = IngredientsList;
     }
 }
