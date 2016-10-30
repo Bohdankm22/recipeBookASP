@@ -26,7 +26,7 @@
             </div>
         </div>
         <div class="container body-content">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+            <asp:ContentPlaceHolder id="MainContent" runat="server"/>
             <hr />
             <footer>
                 <p>&copy; <%: DateTime.Now.Year %> - Author: Bohdan Sharipov</p>
