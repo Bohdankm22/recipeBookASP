@@ -21,10 +21,17 @@ public partial class AddRecipe : System.Web.UI.Page
 
     protected void IngredientButton_Click(object sender, EventArgs e)
     {
-        MyListBox.Items.Add(String.Format("Ingredient {0}: {1} {2}{3}", MyListBox.Items.Count + 1, IngrNameTextBox.Text, QuantityTextBox.Text, TextBox3.Text));
-        IngrNameTextBox.Text = "";
-        QuantityTextBox.Text = "";
-        TextBox3.Text = "";
+        if (LimitIngredients.IsValid)
+        {
+            MyListBox.Items.Add(String.Format("Ingredient {0}: {1} {2}{3}", MyListBox.Items.Count + 1, IngrNameTextBox.Text, QuantityTextBox.Text, TextBox3.Text));
+            IngrNameTextBox.Text = "";
+            QuantityTextBox.Text = "";
+            TextBox3.Text = "";
+        }
     }
-    
+
+    protected void LimitIngredients_ServerValidate(object source, ServerValidateEventArgs args)
+    {
+        args.IsValid = MyListBox.Items.Count >= 15 ? false : true;
+    }
 }
