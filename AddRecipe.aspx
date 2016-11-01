@@ -1,5 +1,8 @@
 ﻿<%@ Page Title="Add your Recipe" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="AddRecipe.aspx.cs" Inherits="AddRecipe" %>
 
+<%@ Register src="ListOfIngr.ascx" tagname="ListOfIngr" tagprefix="uc1" %>
+
+
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div class="jumbotron">
         <h2><%: Title %></h2>
@@ -34,37 +37,12 @@
                 <asp:TextBox ID="RecipeDescriptionTextBox" runat="server"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ValidationGroup="Recipe" ErrorMessage="Please fill the Description" ControlToValidate="RecipeDescriptionTextBox" SetFocusOnError="True" Display="Dynamic"></asp:RequiredFieldValidator>
             </p>
-
-            <p>
-                Ingredients:
-            </p>
-            <p>
-                <asp:ListBox ID="MyListBox" runat="server" ></asp:ListBox>
-            </p>
-
-            <asp:Panel ID="MyPanel" runat="server" GroupingText="Add ingredient" BorderColor="Black" BorderWidth="2">
-                <p>
-                    <asp:Label ID="IngrNameLabel" runat="server" Text="Ingredient Name"></asp:Label>
-                    <asp:TextBox ID="IngrNameTextBox" runat="server"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="Ingredient Name is required!" ControlToValidate="IngrNameTextBox" ValidationGroup="Ingred"></asp:RequiredFieldValidator>
-                </p>
-                <p>
-                    <asp:Label ID="QuantityLabel" runat="server" Text="Quantity"></asp:Label>
-                    <asp:TextBox ID="QuantityTextBox" runat="server"></asp:TextBox>
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="RegularExpressionValidator" ControlToValidate="QuantityTextBox" ValidationExpression="[0-9]*\.?[0-9]+" ValidationGroup="Ingred"></asp:RegularExpressionValidator>
-                </p>
-                <p>
-                    <asp:Label ID="Label3" runat="server" Text="Units of measure"></asp:Label>
-                    <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
-                </p>
-                <p>
-                    <asp:Button ID="IngredientButton" runat="server" ValidationGroup="Ingred" OnClick="IngredientButton_Click" Text="Add"/>
-                    <asp:CustomValidator ID="LimitIngredients" runat="server" ControlToValidate="IngrNameTextBox" ErrorMessage="You can only add 15 ingredients" ValidationGroup="Ingred" OnServerValidate="LimitIngredients_ServerValidate"></asp:CustomValidator>
-                </p>
-            </asp:Panel>
             <br />
+
+            <uc1:ListOfIngr ID="ListOfIngr1" runat="server" />
+            
             <p>
-                <asp:Button ID="ResetButton" runat="server" Text="Reset" CausesValidation="False" OnClientClick="this.form.reset();return false;" />
+                <asp:Button ID="ResetButton" runat="server" Text="Reset" CausesValidation="False" OnClientClick="resetButtonClick" />
                 <asp:Button ID="SubmitButton" runat="server" Text="Submit" ValidationGroup="Recipe" />
             </p>
         </div>

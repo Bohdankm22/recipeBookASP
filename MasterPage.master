@@ -21,6 +21,7 @@
                         <li><a runat="server" href="~/Recipes.aspx">Recipes</a></li>
                         <li><a runat="server" href="~/AddRecipe.aspx">Add recipe</a></li>
                         <li><a runat="server" href="~/Search.aspx">Search</a></li>
+                        <asp:ContentPlaceHolder id="ContentPlaceHolderMenu" runat="server"/>
                     </ul>
                 </div>
             </div>
