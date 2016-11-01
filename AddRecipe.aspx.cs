@@ -19,13 +19,41 @@ public partial class AddRecipe : PagesParent
         //{
         //    //IngredientsList.Add(new Ingredient());
         //}
-        ((List<Recipe>)Application["RecipesList"]).Add(new Recipe(RecipeNameTextBox.Text, SubmitedByTextBox.Text,
-            CategoryTextBox.Text, Double.Parse(CookingTimeTextBox.Text), int.Parse(NumberOfServingsTextBox.Text), 
+        double cookTime = 0.0;
+        try
+        {
+            cookTime = Double.Parse(CookingTimeTextBox.Text);
+        } catch (Exception)
+        {}
+        int numbOfServ = 0;
+        try
+        {
+            numbOfServ = int.Parse(NumberOfServingsTextBox.Text);
+        }
+        catch (Exception)
+        { }
+
+        List<Recipe> list = ((List<Recipe>)Application["RecipesList"]);
+        list.Add(new Recipe(RecipeNameTextBox.Text, SubmitedByTextBox.Text,
+            CategoryTextBox.Text, cookTime, numbOfServ,
             RecipeDescriptionTextBox.Text, IngredientsList));
+        Application["RecipesList"] = list;
+        cleanForm();
+    }
+
+    public void cleanForm()
+    {
+        //ListOfIngr1.Clean();
+        RecipeNameTextBox.Text = "";
+        SubmitedByTextBox.Text = "";
+        CategoryTextBox.Text = "";
+        CookingTimeTextBox.Text = "";
+        NumberOfServingsTextBox.Text = "";
+        RecipeDescriptionTextBox.Text = "";
     }
 
     public void resetButtonClick(object sender, EventArgs e)
     {
-        //ListOfIngr1.Clean();
+        cleanForm();   
     }
 }

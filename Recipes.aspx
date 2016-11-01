@@ -13,7 +13,10 @@
                         <span><b>Name</b></span>
                     </td>
                     <td>
-                        <span><b>Description</b></span>
+                        <span><b>Submitted by</b></span>
+                    </td>
+                    <td>
+                        <span><b>Preparation Time</b></span>
                     </td>
                 </tr>
               <tr runat="server" id="itemPlaceholder" ></tr>
@@ -26,8 +29,11 @@
                 <asp:Label ID="NameLabel" runat="server" Text='<%#Eval("Name") %>' />
               </td>
               <td runat="server">
-                <asp:Label ID="Label2" runat="server" Text='<%#Eval("Description") %>' />
+                <asp:Label ID="Label2" runat="server" Text='<%#Eval("SubmitedBy") %>' />
               </td>
+               <td>
+                   <asp:Label ID="Label3" runat="server" Text='<%#Eval("PreparationTime") %>' />
+               </td>
             </tr>
           </ItemTemplate>
         </asp:ListView>

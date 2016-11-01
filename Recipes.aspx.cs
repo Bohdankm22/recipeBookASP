@@ -9,6 +9,7 @@ public partial class Recipes : PagesParent
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        ListView1.DataSource = Application["RecipesList"];
+        ListView1.DataBind();
     }
 }

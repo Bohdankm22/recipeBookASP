@@ -43,7 +43,7 @@
             
             <p>
                 <asp:Button ID="ResetButton" runat="server" Text="Reset" CausesValidation="False" OnClientClick="resetButtonClick" />
-                <asp:Button ID="SubmitButton" runat="server" Text="Submit" ValidationGroup="Recipe" />
+                <asp:Button ID="SubmitButton" runat="server" Text="Submit" ValidationGroup="Recipe"  OnClick="RecipeSave"/>
             </p>
         </div>
     </div>
