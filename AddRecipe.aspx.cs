@@ -43,7 +43,7 @@ public partial class AddRecipe : PagesParent
 
     public void cleanForm()
     {
-        //ListOfIngr1.Clean();
+        ListOfIngr1.Clean();
         RecipeNameTextBox.Text = "";
         SubmitedByTextBox.Text = "";
         CategoryTextBox.Text = "";

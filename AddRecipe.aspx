@@ -49,7 +49,7 @@
             <uc1:ListOfIngr ID="ListOfIngr1" runat="server" />
             
             <p>
-                <asp:Button ID="ResetButton" runat="server" Text="Cencel" CausesValidation="False" OnClientClick="resetButtonClick" />
+                <asp:Button ID="ResetButton" runat="server" Text="Cancel" CausesValidation="False" OnClick="resetButtonClick" />
                 <asp:Button ID="SubmitButton" runat="server" Text="Save" ValidationGroup="Recipe"  OnClick="RecipeSave"/>
             </p>
         </div>

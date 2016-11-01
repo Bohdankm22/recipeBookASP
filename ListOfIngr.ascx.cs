@@ -32,6 +32,7 @@ public partial class ListOfIngr : System.Web.UI.UserControl
     public void Clean()
     {
         MyListBox.Items.Clear();
+        MyListBox.DataBind();
     }
 
 }
