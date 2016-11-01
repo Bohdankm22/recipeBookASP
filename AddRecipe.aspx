@@ -28,12 +28,14 @@
             <p>
                 <asp:Label ID="CookingTimeLabel" runat="server" Text="Prepare/Cooking Time"></asp:Label>
                 <asp:TextBox ID="CookingTimeTextBox" runat="server"></asp:TextBox>
+                <asp:RangeValidator ID="CookTimeRV" runat="server" ControlToValidate="CookingTimeTextBox" Type="Double" MinimumValue="0" MaximumValue="99999" ValidationGroup="Recipe" ErrorMessage="Must be a digit" />
             </p>
             <p>
                 <asp:Label ID="NumberOfServingsLabel" runat="server" Text="Number of Servings"></asp:Label>
                 &nbsp;&nbsp;&nbsp;
                 <asp:TextBox ID="NumberOfServingsTextBox" runat="server"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ValidationGroup="Recipe" ErrorMessage="Number of Servings is required" ControlToValidate="NumberOfServingsTextBox" SetFocusOnError="True" Display="Dynamic"></asp:RequiredFieldValidator>
+                <asp:RangeValidator ID="RangeValidator2" runat="server" ControlToValidate="NumberOfServingsTextBox" Type="Integer" MinimumValue="0" MaximumValue="999" ValidationGroup="Recipe" ErrorMessage="Must be a digit" />
             </p>
 
             <p>
