@@ -10,16 +10,19 @@
         <div>
             <p>
                 <asp:Label ID="RecipeNameLabel" runat="server" Text="Recipe Name"></asp:Label>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <asp:TextBox ID="RecipeNameTextBox" runat="server"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ValidationGroup="Recipe" ControlToValidate="RecipeNameTextBox" ErrorMessage="Recipe name is required!" SetFocusOnError="True" Display="Dynamic" />
             </p>
             <p>
                 <asp:Label ID="SubmitedByLabel" runat="server" Text="Submited By"></asp:Label>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <asp:TextBox ID="SubmitedByTextBox" runat="server"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ValidationGroup="Recipe" ErrorMessage="Please fill Submited By field" ControlToValidate="SubmitedByTextBox" SetFocusOnError="True" Display="Dynamic" />
             </p>
             <p>
                 <asp:Label ID="CategoryLabel" runat="server" Text="Category"></asp:Label>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <asp:TextBox ID="CategoryTextBox" runat="server"></asp:TextBox>
             </p>
             <p>
@@ -28,12 +31,14 @@
             </p>
             <p>
                 <asp:Label ID="NumberOfServingsLabel" runat="server" Text="Number of Servings"></asp:Label>
+                &nbsp;&nbsp;&nbsp;
                 <asp:TextBox ID="NumberOfServingsTextBox" runat="server"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ValidationGroup="Recipe" ErrorMessage="Number of Servings is required" ControlToValidate="NumberOfServingsTextBox" SetFocusOnError="True" Display="Dynamic"></asp:RequiredFieldValidator>
             </p>
 
             <p>
                 <asp:Label ID="RecipeDescriptionLabel" runat="server" Text="Recipe Description"></asp:Label>
+                &nbsp;&nbsp;&nbsp;
                 <asp:TextBox ID="RecipeDescriptionTextBox" runat="server"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ValidationGroup="Recipe" ErrorMessage="Please fill the Description" ControlToValidate="RecipeDescriptionTextBox" SetFocusOnError="True" Display="Dynamic"></asp:RequiredFieldValidator>
             </p>
@@ -42,8 +47,8 @@
             <uc1:ListOfIngr ID="ListOfIngr1" runat="server" />
             
             <p>
-                <asp:Button ID="ResetButton" runat="server" Text="Reset" CausesValidation="False" OnClientClick="resetButtonClick" />
-                <asp:Button ID="SubmitButton" runat="server" Text="Submit" ValidationGroup="Recipe"  OnClick="RecipeSave"/>
+                <asp:Button ID="ResetButton" runat="server" Text="Cencel" CausesValidation="False" OnClientClick="resetButtonClick" />
+                <asp:Button ID="SubmitButton" runat="server" Text="Save" ValidationGroup="Recipe"  OnClick="RecipeSave"/>
             </p>
         </div>
     </div>

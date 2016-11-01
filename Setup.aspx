@@ -8,7 +8,7 @@
         <asp:RadioButton runat="server" ID="LightTheme" GroupName="Theme" Text="Light"/>
     </p>
     <p>
-        <asp:Button runat="server" Text="Set" OnClick="Unnamed1_Click" />
+        <asp:Button ID="ThemeBut" runat="server" Text="Set" OnClick="Unnamed1_Click" />
     </p>
 </asp:Content>
 
