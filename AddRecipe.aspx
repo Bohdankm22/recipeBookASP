@@ -40,7 +40,7 @@
                 <asp:ListBox ID="MyListBox" runat="server"></asp:ListBox>
             </p>
 
-            <asp:Panel ID="MyPanel" runat="server" GroupingText="Add ingredient">
+            <asp:Panel ID="MyPanel" runat="server" GroupingText="Add ingredient" BorderColor="Black" BorderWidth="2">
                 <p>
                     <asp:Label ID="IngrNameLabel" runat="server" Text="Ingredient Name"></asp:Label>
                     <asp:TextBox ID="IngrNameTextBox" runat="server"></asp:TextBox>
@@ -55,7 +55,9 @@
                     <asp:Label ID="Label3" runat="server" Text="Units of measure"></asp:Label>
                     <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
                 </p>
-                <asp:Button ID="IngredientButton" runat="server" ValidationGroup="Ingred" OnClick="IngredientButton_Click" Text="Add"/>
+                <p>
+                    <asp:Button ID="IngredientButton" runat="server" ValidationGroup="Ingred" OnClick="IngredientButton_Click" Text="Add"/>
+                </p>
             </asp:Panel>
 
             <p>
