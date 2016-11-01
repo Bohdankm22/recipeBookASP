@@ -6,6 +6,7 @@ using System.Web;
 /// <summary>
 /// Ingridient that required for recipe
 /// </summary>
+[Serializable] 
 public class Ingredient
 {
     public string Name { get; set; }
