@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+﻿<%@ Page Title="CookBook" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolderMenu" runat="server">
     <li><a runat="server" href="~/Setup.aspx">Setup</a></li>
