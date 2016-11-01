@@ -4,16 +4,16 @@
     <div class="jumbotron">
         <h2><%: Title %></h2>
         <br />
-        <div style="width: 800px">
+        <div>
             <p>
                 <asp:Label ID="RecipeNameLabel" runat="server" Text="Recipe Name"></asp:Label>
                 <asp:TextBox ID="RecipeNameTextBox" runat="server"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="RecipeNameTextBox" ErrorMessage="Recipe name is required!" SetFocusOnError="True" Display="Dynamic" />
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ValidationGroup="Recipe" ControlToValidate="RecipeNameTextBox" ErrorMessage="Recipe name is required!" SetFocusOnError="True" Display="Dynamic" />
             </p>
             <p>
                 <asp:Label ID="SubmitedByLabel" runat="server" Text="Submited By"></asp:Label>
                 <asp:TextBox ID="SubmitedByTextBox" runat="server"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Please fill Submited By field" ControlToValidate="SubmitedByTextBox" SetFocusOnError="True" Display="Dynamic" />
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ValidationGroup="Recipe" ErrorMessage="Please fill Submited By field" ControlToValidate="SubmitedByTextBox" SetFocusOnError="True" Display="Dynamic" />
             </p>
             <p>
                 <asp:Label ID="CategoryLabel" runat="server" Text="Category"></asp:Label>
@@ -26,18 +26,20 @@
             <p>
                 <asp:Label ID="NumberOfServingsLabel" runat="server" Text="Number of Servings"></asp:Label>
                 <asp:TextBox ID="NumberOfServingsTextBox" runat="server"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Number of Servings is required" ControlToValidate="NumberOfServingsTextBox" SetFocusOnError="True" Display="Dynamic"></asp:RequiredFieldValidator>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ValidationGroup="Recipe" ErrorMessage="Number of Servings is required" ControlToValidate="NumberOfServingsTextBox" SetFocusOnError="True" Display="Dynamic"></asp:RequiredFieldValidator>
             </p>
 
             <p>
                 <asp:Label ID="RecipeDescriptionLabel" runat="server" Text="Recipe Description"></asp:Label>
                 <asp:TextBox ID="RecipeDescriptionTextBox" runat="server"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Please fill the Description" ControlToValidate="RecipeDescriptionTextBox" SetFocusOnError="True" Display="Dynamic"></asp:RequiredFieldValidator>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ValidationGroup="Recipe" ErrorMessage="Please fill the Description" ControlToValidate="RecipeDescriptionTextBox" SetFocusOnError="True" Display="Dynamic"></asp:RequiredFieldValidator>
             </p>
 
             <p>
                 Ingredients:
-                <asp:ListBox ID="MyListBox" runat="server"></asp:ListBox>
+            </p>
+            <p>
+                <asp:ListBox ID="MyListBox" runat="server" ></asp:ListBox>
             </p>
 
             <asp:Panel ID="MyPanel" runat="server" GroupingText="Add ingredient" BorderColor="Black" BorderWidth="2">
@@ -60,10 +62,10 @@
                     <asp:CustomValidator ID="LimitIngredients" runat="server" ControlToValidate="IngrNameTextBox" ErrorMessage="You can only add 15 ingredients" ValidationGroup="Ingred" OnServerValidate="LimitIngredients_ServerValidate"></asp:CustomValidator>
                 </p>
             </asp:Panel>
-
+            <br />
             <p>
                 <asp:Button ID="ResetButton" runat="server" Text="Reset" CausesValidation="False" OnClientClick="this.form.reset();return false;" />
-                <asp:Button ID="SubmitButton" runat="server" Text="Submit" />
+                <asp:Button ID="SubmitButton" runat="server" Text="Submit" ValidationGroup="Recipe" />
             </p>
         </div>
     </div>
