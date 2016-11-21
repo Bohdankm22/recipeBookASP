@@ -12,8 +12,7 @@ public partial class RecipeDetails : System.Web.UI.Page
 
         if (!IsPostBack)
         {
-            Request.QueryString["RecipeId"].ToString();
-            int k = 0;
+            
         }
     }
 }
