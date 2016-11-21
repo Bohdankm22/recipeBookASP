@@ -45,12 +45,9 @@
                 </tr>
             </ItemTemplate>
         </asp:DataList>
-        <asp:SqlDataSource runat="server" ID="SqlDataSource2" ConnectionString='<%$ ConnectionStrings:CookBookConnectionString %>' SelectCommand="SELECT ingredient.Ingredient_name, ingredient.Ingredient_measure_unit, ingredient_recipe.Ingredient_quantity
-            FROM  ingredient INNER JOIN
-                     ingredient_recipe ON ingredient.Ingredient_id = ingredient_recipe.Ingredient_id
-            where ([recipe_id] = @recipe_id);">
+        <asp:SqlDataSource runat="server" ID="SqlDataSource2" ConnectionString='<%$ ConnectionStrings:CookBookConnectionString %>' SelectCommand="selectRecipeIngredients" SelectCommandType="StoredProcedure">
             <SelectParameters>
-                <asp:QueryStringParameter QueryStringField="RecipeId" Name="recipe_id"></asp:QueryStringParameter>
+                <asp:QueryStringParameter QueryStringField="RecipeId" Name="recipe_id" DefaultValue="null"></asp:QueryStringParameter>
             </SelectParameters>
         </asp:SqlDataSource>
     </div>
