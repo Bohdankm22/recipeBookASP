@@ -5,10 +5,19 @@
     <div class="jumbotron">
         <h2><%: Title %></h2>
 
-        <asp:DetailsView ID="DetailsView1" runat="server" Height="50px" Width="125px" DataSourceID="SqlDataSource1" CssClass="table"></asp:DetailsView>
+        <asp:detailsview id="DetailsView1" runat="server" height="50px" width="125px" datasourceid="SqlDataSource1" cssclass="table" AutoGenerateRows="False">
+            <Fields>
+                <asp:BoundField DataField="recipe_name" HeaderText="Recipe name" ReadOnly="True"/>
+                <asp:BoundField DataField="Recipe_submited_by" HeaderText="Submited By" ReadOnly="True"/>
+                <asp:BoundField DataField="recipe_category" HeaderText="Category" ReadOnly="True"/>
+                <asp:BoundField DataField="Recipe_prep_time" HeaderText="Preparation time" ReadOnly="True"/>
+                <asp:BoundField DataField="Recipe_servings_number" HeaderText="Number of servings" ReadOnly="True"/>
+                <asp:BoundField DataField="Recipe_description" HeaderText="Descriptions" ReadOnly="True"/>
+            </Fields>
+        </asp:detailsview>
         <asp:SqlDataSource runat="server" ID="SqlDataSource1" ConnectionString='<%$ ConnectionStrings:CookBookConnectionString %>' SelectCommand="selectRecipeDetails" SelectCommandType="StoredProcedure">
             <SelectParameters>
-                <asp:QueryStringParameter QueryStringField="RecipeId" DefaultValue="null" Name="recipe_id" Type="Int32"></asp:QueryStringParameter>
+                <asp:QueryStringParameter QueryStringField="RecipeId" DefaultValue="1" Name="recipe_id" Type="Int32"></asp:QueryStringParameter>
             </SelectParameters>
         </asp:SqlDataSource>
         
