@@ -9,7 +9,23 @@ public partial class Recipes : PagesParent
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        ListView1.DataSource = Application["RecipesList"];
-        ListView1.DataBind();
+        if (!IsPostBack)
+        {
+
+        }
     }
+
+    protected void gridViewRowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        if (e.CommandName == "ShowDetailsView")
+        {
+            GridView1.SelectRow(Convert.ToInt32(e.CommandArgument));
+            GridViewRow gvr = GridView1.SelectedRow;
+            string text = gvr.Cells[0].Text;
+            Console.WriteLine("There is a method" + gvr.Cells[0].Text);
+            Response.Redirect("RecipeDetails.aspx?RecipeId=" + gvr.Cells[0].Text);
+        }
+            Console.WriteLine("There is a method");
+    }
+
 }

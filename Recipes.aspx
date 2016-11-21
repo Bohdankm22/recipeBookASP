@@ -4,39 +4,20 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div class="jumbotron">
         <h2><%: Title %></h2>
-    
-        <asp:ListView runat="server" ID="ListView1">
-          <LayoutTemplate>
-            <table runat="server" id="table1" style="border:medium; border-color:black" border="1">
-                <tr>
-                    <td style="width: 250px;">
-                        <span><b>Name</b></span>
-                    </td>
-                    <td>
-                        <span><b>Submitted by</b></span>
-                    </td>
-                    <td>
-                        <span><b>Preparation Time</b></span>
-                    </td>
-                </tr>
-              <tr runat="server" id="itemPlaceholder" ></tr>
-            </table>
-          </LayoutTemplate>
-          <ItemTemplate>
-            <tr runat="server">
-              <td runat="server" style="width: 250px;">
-                <%-- Data-bound content. --%>
-                <asp:Label ID="NameLabel" runat="server" Text='<%#Eval("Name") %>' />
-              </td>
-              <td runat="server">
-                <asp:Label ID="Label2" runat="server" Text='<%#Eval("SubmitedBy") %>' />
-              </td>
-               <td>
-                   <asp:Label ID="Label3" runat="server" Text='<%#Eval("PreparationTime") %>' />
-               </td>
-            </tr>
-          </ItemTemplate>
-        </asp:ListView>
+
+        <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="recipe_id" DataSourceID="SqlDataSource1" CssClass="table" PageSize="5" onrowcommand="gridViewRowCommand">
+       
+            <Columns>
+                <asp:BoundField DataField="recipe_id" HeaderText="Recipe id" ReadOnly="True" SortExpression="recipe_id" />
+                <asp:BoundField DataField="Recipe_name" HeaderText="Name" SortExpression="Recipe_name" />
+                <asp:BoundField DataField="Recipe_submited_by" HeaderText="Submited By" SortExpression="Recipe_submited_by" />
+                <asp:BoundField DataField="Recipe_prep_time" HeaderText="Preparation Time" SortExpression="Recipe_prep_time" />
+
+                <asp:ButtonField CommandName="ShowDetailsView" Text="Details"></asp:ButtonField>
+            </Columns>
+
+        </asp:GridView>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:CookBookConnectionString %>" SelectCommand="select_all_recipes" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
     </div>
 </asp:Content>
 
