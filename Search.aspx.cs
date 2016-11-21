@@ -9,7 +9,6 @@ public partial class Search : PagesParent
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
     }
 
     protected void searchRecipes(object sender, EventArgs e)
