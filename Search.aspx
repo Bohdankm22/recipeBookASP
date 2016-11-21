@@ -4,37 +4,27 @@
     <div class="jumbotron">
         <h2><%: Title %></h2>
         <br />
-        <asp:Label runat="server" Text="Search"/>
-        <input id="searchLine" runat="server" />
-        <asp:Button runat="server" id="searchRec" onClick="searchRecipes" Text="Search recipes"/>
-        <br/>
-        <br/>
+        <asp:Label runat="server" Text="Submited By"/>
+        <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="Recipe_submited_by" DataValueField="Recipe_submited_by" CssClass="dropdown"></asp:DropDownList>
+        <asp:SqlDataSource runat="server" ID="SqlDataSource1" ConnectionString='<%$ ConnectionStrings:CookBookConnectionString %>' SelectCommand="SELECT [Recipe_submited_by] FROM [recipe]"></asp:SqlDataSource>
+        
 
-        <asp:ListView runat="server" ID="ListView1" style="margin-right: 416px">
-          <LayoutTemplate>
-            <table runat="server" id="table1" style="border:medium; border-color:black" border="1">
-                <tr>
-                    <td style="width: 250px;">
-                        <span><b>Name</b></span>
-                    </td>
-                    <td>
-                        <span><b>Description</b></span>
-                    </td>
-                </tr>
-              <tr runat="server" id="itemPlaceholder" ></tr>
-            </table>
-          </LayoutTemplate>
-          <ItemTemplate>
-            <tr runat="server">
-              <td runat="server" style="width: 250px;">
-                <%-- Data-bound content. --%>
-                <asp:Label ID="NameLabel" runat="server" Text='<%#Eval("Name") %>' />
-              </td>
-              <td runat="server">
-                <asp:Label ID="Label2" runat="server" Text='<%#Eval("Description") %>' />
-              </td>
-            </tr>
-          </ItemTemplate>
-        </asp:ListView>
+        <asp:Label runat="server" Text="Category"/>
+        <asp:DropDownList ID="DropDownList3" runat="server" DataSourceID="SqlDataSource3" DataTextField="recipe_category" DataValueField="recipe_category" CssClass="dropdown"></asp:DropDownList>
+        <asp:SqlDataSource runat="server" ID="SqlDataSource3" ConnectionString='<%$ ConnectionStrings:CookBookConnectionString %>' SelectCommand="SELECT distinct [recipe_category] FROM [recipe]"></asp:SqlDataSource>
+    
+
+        <asp:Label runat="server" Text="Ingridient"/>
+        <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSource2" DataTextField="Ingredient_name" DataValueField="Ingredient_name" CssClass="dropdown"></asp:DropDownList>
+        <asp:SqlDataSource runat="server" ID="SqlDataSource2" ConnectionString='<%$ ConnectionStrings:CookBookConnectionString %>' SelectCommand="SELECT [Ingredient_name] FROM [ingredient]"></asp:SqlDataSource>
+    
+        
+    
+    
+   
+    
+    
+    
+    
     </div>
 </asp:Content>
