@@ -11,9 +11,9 @@ public partial class RecipeDetails : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
 
-        if (!IsPostBack)
+        if (Request.QueryString["RecipeId"] == null)
         {
-            
+            Response.Redirect("Recipes.aspx");
         }
     }
 }
