@@ -10,6 +10,11 @@ public partial class RecipeDetails : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (IsPostBack)
+        {
+            DataList1.Visible = false;
+            Label1.Visible = true;
+        }
 
         if (Request.QueryString["RecipeId"] == null)
         {

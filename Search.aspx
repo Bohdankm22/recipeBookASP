@@ -26,7 +26,7 @@
 
         <br />
 
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource4" CssClass="table-bordered" onrowcommand="gridViewRowCommand">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource4" CssClass="table table-hover table-striped" onrowcommand="gridViewRowCommand">
             <Columns>
                 <asp:BoundField DataField="Recipe_id" HeaderText="Id" ItemStyle-Width="5%"></asp:BoundField>
                 <asp:BoundField DataField="Recipe_name" HeaderText="Name" ItemStyle-Width="20%"></asp:BoundField>
