@@ -1,5 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="ListOfIngr.ascx.cs" Inherits="ListOfIngr" %>
 
+<!-- (c) Author Bohdan Sharipov. All rights reserved -->
+
 <p>
     Ingredients:
 </p>
@@ -15,6 +17,9 @@
         <asp:TextBox ID="IngrNameTextBox" runat="server"></asp:TextBox>
         <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="Ingredient Name is required!" ControlToValidate="IngrNameTextBox" ValidationGroup="Ingred"></asp:RequiredFieldValidator>
     </p>
+    
+<!-- (c) Author Bohdan Sharipov. All rights reserved -->
+
     <p>
         <asp:Label ID="QuantityLabel" runat="server" Text="Quantity"></asp:Label>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -32,3 +37,5 @@
     </p>
 </asp:Panel>
 <br />
+
+<!-- (c) Author Bohdan Sharipov. All rights reserved -->

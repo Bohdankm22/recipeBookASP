@@ -1,5 +1,7 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
 
+<!-- (c) Author Bohdan Sharipov. All rights reserved -->
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -19,6 +21,9 @@
                     <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/">Home</a></li>
                         <li><a runat="server" href="~/Recipes.aspx">Recipes</a></li>
+                        
+<!-- (c) Author Bohdan Sharipov. All rights reserved -->
+
                         <li><a runat="server" href="~/AddRecipe.aspx">Add recipe</a></li>
                         <li><a runat="server" href="~/Search.aspx">Search</a></li>
                         <asp:ContentPlaceHolder id="ContentPlaceHolderMenu" runat="server"/>
@@ -37,3 +42,5 @@
     </form>
 </body>
 </html>
+
+<!-- (c) Author Bohdan Sharipov. All rights reserved -->

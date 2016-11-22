@@ -244,3 +244,6 @@ ModelManifest.xml
 # FAKE - F# Make
 .fake/
 /Solution.sln
+
+# ignore web.config as there are login and password to database
+Web.config

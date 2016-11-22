@@ -5,6 +5,11 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+/*
+ * (c) Author: Bohdan Sharipov
+ * All rights reserved.
+ */
+
 public partial class AddRecipe : PagesParent
 {
     protected List<Ingredient> IngredientsList = new List<Ingredient>();
