@@ -29,13 +29,11 @@
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource4" CssClass="table table-hover table-striped" onrowcommand="gridViewRowCommand">
             <Columns>
                 <asp:BoundField DataField="Recipe_id" HeaderText="Id" ItemStyle-Width="5%"></asp:BoundField>
-                <asp:BoundField DataField="Recipe_name" HeaderText="Name" ItemStyle-Width="20%"></asp:BoundField>
+                <asp:ButtonField DataTextField="Recipe_name" CommandName="ShowDetailsView" HeaderText="Name" ItemStyle-Width="20%"></asp:ButtonField>
                 <asp:BoundField DataField="recipe_category" HeaderText="Category" ItemStyle-Width="30%" ></asp:BoundField>
                 <asp:BoundField DataField="Recipe_submited_by" HeaderText="Submited By" ItemStyle-Width="15%" ></asp:BoundField>
                 <asp:BoundField DataField="Recipe_prep_time" HeaderText="Preparation time" ItemStyle-Width="20%" ></asp:BoundField>
                 <asp:BoundField DataField="Recipe_servings_number" HeaderText="Servings" ItemStyle-Width="10%" ></asp:BoundField>
-
-                <asp:ButtonField CommandName="ShowDetailsView" Text="Details" ></asp:ButtonField>
             </Columns>
         </asp:GridView>
         <asp:SqlDataSource runat="server" ID="SqlDataSource4" ConnectionString='<%$ ConnectionStrings:CookBookConnectionString %>' SelectCommand="searchRecipes" SelectCommandType="StoredProcedure">
