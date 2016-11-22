@@ -1,28 +1,46 @@
 ﻿<%@ Page Title="Search" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Search.aspx.cs" Inherits="Search" %>
 
+<%-- (c) Author Bohdan Sharipov. All rights reserved --%>
+
 <asp:Content id="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="jumbotron">
         <h2><%: Title %></h2>
-
-        <asp:Label runat="server" Text="Submited By"/>
-        <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="Recipe_submited_by" DataValueField="Recipe_submited_by" CssClass="dropdown" AppendDataBoundItems="True" AutoPostBack="True">
-            <asp:ListItem Text="All" Enabled="true" Selected="True" Value="%"></asp:ListItem>
-        </asp:DropDownList>
-        <asp:SqlDataSource runat="server" ID="SqlDataSource1" ConnectionString='<%$ ConnectionStrings:CookBookConnectionString %>' SelectCommand="SELECT [Recipe_submited_by] FROM [recipe]"></asp:SqlDataSource>
+        <table class="table">
+            <tr>
+                <td>
+                    <asp:Label runat="server" Text="Submited By:"/>
+                </td>
+                <td>
+                    <asp:Label runat="server" Text="Category:"/>
+                </td>
+                <td>
+                    <asp:Label runat="server" Text="Ingridient:"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="Recipe_submited_by" DataValueField="Recipe_submited_by" CssClass="dropdown" AppendDataBoundItems="True" AutoPostBack="True">
+                        <asp:ListItem Text="All" Enabled="true" Selected="True" Value="%"></asp:ListItem>
+                    </asp:DropDownList>
+                </td>
+                <td>
+                    <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSource3" DataTextField="recipe_category" DataValueField="recipe_category" CssClass="dropdown" AppendDataBoundItems="True" AutoPostBack="True">
+                        <asp:ListItem Text="All" Enabled="true" Selected="True" Value="%"></asp:ListItem>
+                    </asp:DropDownList>
+                </td>
+                <td>
+                    <asp:DropDownList ID="DropDownList3" runat="server" DataSourceID="SqlDataSource2" DataTextField="Ingredient_name" DataValueField="Ingredient_name" CssClass="dropdown" AppendDataBoundItems="True" AutoPostBack="True">
+                        <asp:ListItem Text="All" Enabled="true" Selected="True" Value="%"></asp:ListItem>
+                    </asp:DropDownList>
+                </td>
+            </tr>
+        </table>
         
-
-        <asp:Label runat="server" Text="Category"/>
-        <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSource3" DataTextField="recipe_category" DataValueField="recipe_category" CssClass="dropdown" AppendDataBoundItems="True" AutoPostBack="True">
-            <asp:ListItem Text="All" Enabled="true" Selected="True" Value="%"></asp:ListItem>
-        </asp:DropDownList>
+        <asp:SqlDataSource runat="server" ID="SqlDataSource1" ConnectionString='<%$ ConnectionStrings:CookBookConnectionString %>' SelectCommand="SELECT distinct [Recipe_submited_by] FROM [recipe]"></asp:SqlDataSource>
         <asp:SqlDataSource runat="server" ID="SqlDataSource3" ConnectionString='<%$ ConnectionStrings:CookBookConnectionString %>' SelectCommand="SELECT distinct [recipe_category] FROM [recipe]"></asp:SqlDataSource>
-    
+        <asp:SqlDataSource runat="server" ID="SqlDataSource2" ConnectionString='<%$ ConnectionStrings:CookBookConnectionString %>' SelectCommand="SELECT distinct [Ingredient_name] FROM [ingredient]"></asp:SqlDataSource>
 
-        <asp:Label runat="server" Text="Ingridient"/>
-        <asp:DropDownList ID="DropDownList3" runat="server" DataSourceID="SqlDataSource2" DataTextField="Ingredient_name" DataValueField="Ingredient_name" CssClass="dropdown" AppendDataBoundItems="True" AutoPostBack="True">
-            <asp:ListItem Text="All" Enabled="true" Selected="True" Value="%"></asp:ListItem>
-        </asp:DropDownList>
-        <asp:SqlDataSource runat="server" ID="SqlDataSource2" ConnectionString='<%$ ConnectionStrings:CookBookConnectionString %>' SelectCommand="SELECT [Ingredient_name] FROM [ingredient]"></asp:SqlDataSource>
+<%-- (c) Author Bohdan Sharipov. All rights reserved --%>
 
         <br />
 
@@ -44,4 +62,8 @@
             </SelectParameters>
         </asp:SqlDataSource>
     </div>
+
+    <%-- (c) Author Bohdan Sharipov. All rights reserved --%>
+
 </asp:Content>
+

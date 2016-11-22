@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="Add your Recipe" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="AddRecipe.aspx.cs" Inherits="AddRecipe" %>
 
+<%-- (c) Author Bohdan Sharipov. All rights reserved --%>
+
 <%@ Register src="ListOfIngr.ascx" tagname="ListOfIngr" tagprefix="uc1" %>
 
 
@@ -25,6 +27,9 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <asp:TextBox ID="CategoryTextBox" runat="server"></asp:TextBox>
             </p>
+
+<%-- (c) Author Bohdan Sharipov. All rights reserved --%>
+
             <p>
                 <asp:Label ID="CookingTimeLabel" runat="server" Text="Prepare/Cooking Time"></asp:Label>
                 <asp:TextBox ID="CookingTimeTextBox" runat="server"></asp:TextBox>

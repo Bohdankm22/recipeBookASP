@@ -1,12 +1,16 @@
 ﻿<%@ Page Title="Recipes List" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Recipes.aspx.cs" Inherits="Recipes" %>
 <%@ Register TagPrefix="rc" TagName="RecipeItem" Src="RecipeItem.ascx" %>
 
+<%-- (c) Author Bohdan Sharipov. All rights reserved --%>
+
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div class="jumbotron">
         <h2><%: Title %></h2>
 
         <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="recipe_id" DataSourceID="SqlDataSource1" CssClass="table table-hover table-striped" PageSize="10" onrowcommand="gridViewRowCommand">
        
+<%-- (c) Author Bohdan Sharipov. All rights reserved --%>
+
             <Columns>
                 <asp:BoundField DataField="recipe_id" HeaderText="Recipe id" ReadOnly="True" SortExpression="recipe_id"/>
                 <asp:ButtonField DataTextField="Recipe_name" CommandName="ShowDetailsView"  HeaderText="Name" SortExpression="Recipe_name" />
@@ -19,3 +23,5 @@
     </div>
 </asp:Content>
 
+
+<%-- (c) Author Bohdan Sharipov. All rights reserved --%>

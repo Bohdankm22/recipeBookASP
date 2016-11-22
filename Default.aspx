@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="CookBook" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
 
+<%-- (c) Author Bohdan Sharipov. All rights reserved --%>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolderMenu" runat="server">
     <li><a runat="server" href="~/Setup.aspx">Setup</a></li>
 </asp:Content>
@@ -10,6 +12,8 @@
         <h1>Cookbook</h1>
         <p class="lead">Add your recipes, take a look at other recipes. Share your knowladge and get some.</p>
     </div>
+    
+<%-- (c) Author Bohdan Sharipov. All rights reserved --%>
 
     <div class="row">
         <div class="col-md-4">

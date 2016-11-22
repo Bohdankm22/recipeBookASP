@@ -6,6 +6,11 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Configuration;
 
+/*
+ * (c) Author: Bohdan Sharipov
+ * All rights reserved.
+ */
+
 public partial class RecipeDetails : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
