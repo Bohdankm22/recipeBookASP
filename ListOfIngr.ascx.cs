@@ -12,11 +12,14 @@ using System.Web.UI.WebControls;
 
 public partial class ListOfIngr : System.Web.UI.UserControl
 {
-    private List<Ingredient> ingridientsList = new List<Ingredient>();
+    public static List<Ingredient> ingridientsList = new List<Ingredient>();
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (!IsPostBack)
+        {
+            ingridientsList.Clear();
+        }        
     }
 
     protected void IngredientButton_Click(object sender, EventArgs e)
@@ -45,7 +48,7 @@ public partial class ListOfIngr : System.Web.UI.UserControl
         ingridientsList.Clear();
     }
 
-    public List<Ingredient> getIngredientsList()
+    public static List<Ingredient> getIngredientsList()
     {
         return ingridientsList;
     }

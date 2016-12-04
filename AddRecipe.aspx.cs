@@ -16,7 +16,7 @@ using System.Web.UI.WebControls;
 
 public partial class AddRecipe : PagesParent
 {
-    protected List<Ingredient> IngredientsList = new List<Ingredient>();
+
     protected void Page_Load(object sender, EventArgs e)
     {
     }
@@ -44,25 +44,62 @@ public partial class AddRecipe : PagesParent
         //    RecipeDescriptionTextBox.Text, IngredientsList));
         //Application["RecipesList"] = list;
 
+        List<Ingredient> ingreList = ListOfIngr.getIngredientsList();
+
         string cs = ConfigurationManager.ConnectionStrings["CookBookConnectionString"].ConnectionString;
         using (SqlConnection con = new SqlConnection(cs))
         {
             SqlCommand cmd = new SqlCommand("insertRecipe", con);
             cmd.CommandType = CommandType.StoredProcedure;
+
+            SqlParameter retval = new SqlParameter("RetVal", SqlDbType.Int);
+            retval.Direction = ParameterDirection.ReturnValue;
             
             cmd.Parameters.Add(new SqlParameter("@Recipe_name", RecipeNameTextBox.Text));
             cmd.Parameters.Add(new SqlParameter("@Recipe_submited_by", SubmitedByTextBox.Text));
-            cmd.Parameters.Add(new SqlParameter("@Recipe_prep_time", Double.Parse(CookingTimeTextBox.Text)));
+            if (CookingTimeTextBox.Text != "" && CookingTimeTextBox.Text != null) {
+                cmd.Parameters.Add(new SqlParameter("@Recipe_prep_time", Double.Parse(CookingTimeTextBox.Text)));
+            } else
+            {
+                cmd.Parameters.Add(new SqlParameter("@Recipe_prep_time", DBNull.Value));
+            }         
             cmd.Parameters.Add(new SqlParameter("@Recipe_servings_numb", int.Parse(NumberOfServingsTextBox.Text)));
             cmd.Parameters.Add(new SqlParameter("@Recipe_description", RecipeDescriptionTextBox.Text));
-            cmd.Parameters.Add(new SqlParameter("@Recipe_category", CategoryTextBox.Text));
-      
+            if (CategoryTextBox.Text != "" && CategoryTextBox.Text != null)
+            {
+                cmd.Parameters.Add(new SqlParameter("@Recipe_category", CategoryTextBox.Text));
+            } else
+            {
+                cmd.Parameters.Add(new SqlParameter("@Recipe_category", DBNull.Value));
+            }
+            
+            cmd.Parameters.Add(retval);
+
             con.Open();
             cmd.ExecuteNonQuery();
+            int recipeId = (int) retval.Value;
+
+            for (int i = 0; i < ingreList.Count; i++)
+            {
+                Ingredient ingred = ingreList[i];
+                SqlCommand ingredientSave = new SqlCommand("insert_ingredient", con);
+                ingredientSave.CommandType = CommandType.StoredProcedure;
+                ingredientSave.Parameters.Add(new SqlParameter("@Recipe_id", recipeId));
+                ingredientSave.Parameters.Add(new SqlParameter("@Ingredient_name", ingred.Name));
+                if (ingred.UnitOfMeasure != "" && ingred.UnitOfMeasure != null)
+                {
+                    ingredientSave.Parameters.Add(new SqlParameter("@Ingredient_measure", ingred.UnitOfMeasure));
+                } else
+                {
+                    ingredientSave.Parameters.Add(new SqlParameter("@Ingredient_measure", DBNull.Value));
+                }       
+                ingredientSave.Parameters.Add(new SqlParameter("@Ingredieent_quantity", ingred.Quantity));
+                ingredientSave.ExecuteNonQuery();
+            }
             con.Close();
         }
-
-            cleanForm();
+        ListOfIngr1.Clean();
+        cleanForm();
     }
 
     public void cleanForm()
