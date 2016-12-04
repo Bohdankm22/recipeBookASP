@@ -26,7 +26,12 @@ public partial class ListOfIngr : System.Web.UI.UserControl
     {
         if (LimitIngredients.IsValid)
         {
-            Ingredient ing = new Ingredient(IngrNameTextBox.Text, Double.Parse(QuantityTextBox.Text), UnitMeasureText.Text);
+            double k = 0;
+            if (QuantityTextBox.Text != null && QuantityTextBox.Text != "")
+            {
+                k = Double.Parse(QuantityTextBox.Text);
+            }
+            Ingredient ing = new Ingredient(IngrNameTextBox.Text, k, UnitMeasureText.Text);
             ingridientsList.Add(ing);
 
             MyListBox.Items.Add(String.Format("Ingredient {0}: {1} {2}{3}", MyListBox.Items.Count + 1, IngrNameTextBox.Text, QuantityTextBox.Text, UnitMeasureText.Text));
