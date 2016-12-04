@@ -12,6 +12,8 @@ using System.Web.UI.WebControls;
 
 public partial class ListOfIngr : System.Web.UI.UserControl
 {
+    private List<Ingredient> ingridientsList = new List<Ingredient>();
+
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -21,7 +23,9 @@ public partial class ListOfIngr : System.Web.UI.UserControl
     {
         if (LimitIngredients.IsValid)
         {
-            //Ingredient ing = new Ingredient(IngrNameTextBox.Text, Double.Parse(QuantityTextBox.Text), UnitMeasureText.Text);
+            Ingredient ing = new Ingredient(IngrNameTextBox.Text, Double.Parse(QuantityTextBox.Text), UnitMeasureText.Text);
+            ingridientsList.Add(ing);
+
             MyListBox.Items.Add(String.Format("Ingredient {0}: {1} {2}{3}", MyListBox.Items.Count + 1, IngrNameTextBox.Text, QuantityTextBox.Text, UnitMeasureText.Text));
             IngrNameTextBox.Text = "";
             QuantityTextBox.Text = "";
@@ -38,6 +42,12 @@ public partial class ListOfIngr : System.Web.UI.UserControl
     {
         MyListBox.Items.Clear();
         MyListBox.DataBind();
+        ingridientsList.Clear();
+    }
+
+    public List<Ingredient> getIngredientsList()
+    {
+        return ingridientsList;
     }
 
 }

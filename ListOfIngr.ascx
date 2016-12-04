@@ -7,7 +7,7 @@
 </p>
 <p>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <asp:ListBox ID="MyListBox" runat="server"></asp:ListBox>
+    <asp:ListBox ID="MyListBox" runat="server" Height="101px" Width="503px"></asp:ListBox>
 </p>
 
 <asp:Panel ID="MyPanel" runat="server" GroupingText="Add ingredient" BorderColor="Black" BorderWidth="2">
