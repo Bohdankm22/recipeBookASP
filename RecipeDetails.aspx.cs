@@ -20,10 +20,6 @@ public partial class RecipeDetails : System.Web.UI.Page
             Response.Redirect("Recipes.aspx");
         }
 
-        if (DataList1.Items.Count == 0)
-        {
-            DataList1.Visible = false;
-        }
   
     }
 
