@@ -20,11 +20,6 @@ public partial class RecipeDetails : System.Web.UI.Page
             Response.Redirect("Recipes.aspx");
         }
 
-        if (IsPostBack)
-        {
-            DataList1.DataBind();
-        }
-
         if (DataList1.Items.Count == 0)
         {
             DataList1.Visible = false;
@@ -80,6 +75,27 @@ public partial class RecipeDetails : System.Web.UI.Page
     {
         SqlDataSource2.DeleteParameters["Ingredient_id"].DefaultValue = e.CommandArgument.ToString();
         SqlDataSource2.Delete();
+        DataList1.DataBind();
+    }
+
+    protected void IngredientButton_Click(object sender, EventArgs e)
+    {
+            double k = 0;
+            if (QuantityTextBox.Text != null && QuantityTextBox.Text != "")
+            {
+                k = Double.Parse(QuantityTextBox.Text);
+            }
+            Ingredient ing = new Ingredient(IngrNameTextBox.Text, k, UnitMeasureText.Text);
+
+        SqlDataSource4.InsertParameters["Ingredient_name"].DefaultValue = IngrNameTextBox.Text;
+        SqlDataSource4.InsertParameters["Ingredient_measure"].DefaultValue = UnitMeasureText.Text;
+        SqlDataSource4.InsertParameters["Ingredieent_quantity"].DefaultValue = QuantityTextBox.Text;
+        SqlDataSource4.Insert();
+
+        IngrNameTextBox.Text = "";
+        QuantityTextBox.Text = "";
+        UnitMeasureText.Text = "";
+
         DataList1.DataBind();
     }
 }

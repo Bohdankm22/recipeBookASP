@@ -25,7 +25,7 @@
                         <asp:TextBox runat="server" Text='<%# Bind("Recipe_name") %>' ID="TextBox1"></asp:TextBox>
                     </InsertItemTemplate>
                     <ItemTemplate>
-                        <asp:Label runat="server" Text='<%# Bind("Recipe_name") %>' ID="Label1"></asp:Label>
+                        <asp:Label runat="server" Text='<%# Bind("Recipe_name") %>' ID="Label1RecipeName"></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
 
@@ -71,9 +71,6 @@
         
         <asp:DataList ID="DataList1" runat="server" DataSourceID="SqlDataSource2" CssClass="table table-hover table-striped" ShowHeader="True" OnEditCommand="DataList1_EditCommand" OnCancelCommand="DataList1_CancelCommand" OnUpdateCommand="DataList1_UpdateCommand" OnDeleteCommand="DtateList1_DeleteCommand">
             <HeaderTemplate>
-                 <table class="table-bordered">
-                     <thead>
-                         <td>
                              Ingredient name
                          </td>
                          <td>
@@ -87,18 +84,12 @@
                          </td>
                          <td>
                              Delete
-                         </td>
-                     </thead>
             </HeaderTemplate>
-            <FooterTemplate>
-                </table>
-            </FooterTemplate>
             
 <%-- (c) Author Bohdan Sharipov. All rights reserved --%>
 
             <ItemTemplate>
-                <tr>
-                    <td>
+
                         <asp:Label Text='<%# Eval("Ingredient_name") %>' runat="server" ID="Ingredient_nameLabel" />
                     </td>
                     <td>
@@ -108,7 +99,7 @@
                         <asp:Label Text='<%# Eval("Ingredient_measure_unit") %>' runat="server" ID="Ingredient_measure_unitLabel" />
                     </td>
                     <td>
-                        <asp:LinkButton runat="server" ID="LinkButton1" CommandName="edit" >
+                        <asp:LinkButton runat="server" ID="LinkButton1" CommandName="edit">
                                 Edit
                         </asp:LinkButton>
                     </td>
@@ -116,20 +107,19 @@
                         <asp:LinkButton runat="server" ID="LinkButton4" CommandName="delete" CommandArgument='<%# Eval("Ingredient_id") %>'>
                                 Delete
                         </asp:LinkButton>
-                    </td>
-                </tr>
+
             </ItemTemplate>
                 
             <EditItemTemplate>
-                <tr>
-                    <td>
-                        <asp:TextBox Text='<%# Eval("Ingredient_name") %>' runat="server" ID="Ingredient_nameTextBox" />
+                
+                        <asp:TextBox ID="Ingredient_nameTextBox" runat="server" Text='<%# Eval("Ingredient_name") %>' Width="130px"   />
                     </td>
                     <td>
-                        <asp:TextBox Text='<%# Eval("Ingredient_quantity") %>' runat="server" ID="Ingredient_quantityTextBox" />
+                        <asp:TextBox runat="server" ID="Ingredient_quantityTextBox"  Text='<%# Eval("Ingredient_quantity") %>' Width="70px" />
                     </td>
+                    
                     <td>
-                        <asp:TextBox Text='<%# Eval("Ingredient_measure_unit") %>' runat="server" ID="Ingredient_measure_unitTextBox" />
+                        <asp:TextBox runat="server" ID="Ingredient_measure_unitTextBox" Text='<%# Eval("Ingredient_measure_unit") %>' Width="100px"  />
                     </td>
                     <td>
                         <asp:LinkButton ID="LinkButton3" runat="server" CommandName="update" CommandArgument='<%# Eval("Ingredient_id") %>'>
@@ -139,8 +129,7 @@
                             Cancel
                         </asp:LinkButton>
                     </td>
-                    <td></td>
-                </tr>
+                    <td>
             </EditItemTemplate>
 
         </asp:DataList>
@@ -161,6 +150,42 @@
             </UpdateParameters>
         </asp:SqlDataSource>
 
+
+        <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString='<%$ ConnectionStrings:CookBookConnectionString %>' InsertCommand="insert_ingredient" InsertCommandType="StoredProcedure">
+            <InsertParameters>
+                <asp:QueryStringParameter QueryStringField="RecipeId" DefaultValue="null" Name="recipe_id"></asp:QueryStringParameter>
+                <asp:Parameter Name="Ingredient_name" Type="String"></asp:Parameter>
+                <asp:Parameter Name="Ingredient_measure" Type="String"></asp:Parameter>
+                <asp:Parameter Name="Ingredieent_quantity" Type="Decimal"></asp:Parameter>
+            </InsertParameters>
+        </asp:SqlDataSource>
+
+
+        <asp:Panel ID="MyPanel" runat="server" GroupingText="Add ingredient" BorderColor="Black" BorderWidth="2">
+            <p>
+                <asp:Label ID="IngrNameLabel" runat="server" Text="Ingredient Name"></asp:Label>
+                &nbsp;&nbsp;
+                <asp:TextBox ID="IngrNameTextBox" runat="server"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="Ingredient Name is required!" ControlToValidate="IngrNameTextBox" ValidationGroup="Ingred"></asp:RequiredFieldValidator>
+            </p>
+    
+<!-- (c) Author Bohdan Sharipov. All rights reserved -->
+   
+            <p>
+                <asp:Label ID="UnitMeasureLabel" runat="server" Text="Units of measure"></asp:Label>
+                &nbsp;&nbsp;
+                <asp:TextBox ID="UnitMeasureText" runat="server"></asp:TextBox>
+            </p>
+            <p>
+                <asp:Label ID="QuantityLabel" runat="server" Text="Quantity"></asp:Label>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:TextBox ID="QuantityTextBox" runat="server"></asp:TextBox>
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="RegularExpressionValidator" ControlToValidate="QuantityTextBox" ValidationExpression="[0-9]*\.?[0-9]+" ValidationGroup="Ingred"></asp:RegularExpressionValidator>
+            </p>
+            <p>      
+                <asp:Button ID="IngredientButton" runat="server" ValidationGroup="Ingred" OnClick="IngredientButton_Click" Text="Add" />
+            </p>
+        </asp:Panel>
 
     </div>
 </asp:Content>
