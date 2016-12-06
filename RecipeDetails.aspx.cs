@@ -25,7 +25,11 @@ public partial class RecipeDetails : System.Web.UI.Page
             DataList1.DataBind();
         }
 
-        
+        if (DataList1.Items.Count == 0)
+        {
+            DataList1.Visible = false;
+        }
+  
     }
 
     protected void afterDeleting(object sender, EventArgs e)
@@ -41,5 +45,41 @@ public partial class RecipeDetails : System.Web.UI.Page
         tb.Text = "";
         ddl.Items.Add(new ListItem(text, text));
         ddl.SelectedValue = text;
+    }
+
+    protected void DataList1_EditCommand(object source,
+    DataListCommandEventArgs e)
+    {
+        DataList1.EditItemIndex = e.Item.ItemIndex;
+        DataList1.DataBind();
+    }
+
+    protected void DataList1_CancelCommand(object source,
+        DataListCommandEventArgs e)
+    {
+        DataList1.EditItemIndex = -1;
+        DataList1.DataBind();
+    }
+
+    protected void DataList1_UpdateCommand(object source,
+        DataListCommandEventArgs e)
+    {
+        SqlDataSource2.UpdateParameters["Ingredient_id"].DefaultValue = e.CommandArgument.ToString();
+        SqlDataSource2.UpdateParameters["Ingredient_measure_unit"].DefaultValue = ((TextBox)e.Item.FindControl("Ingredient_measure_unitTextBox")).Text;
+        SqlDataSource2.UpdateParameters["Ingredient_quantity"].DefaultValue = ((TextBox)e.Item.FindControl("Ingredient_quantityTextBox")).Text;
+        SqlDataSource2.UpdateParameters["Ingredient_name"].DefaultValue = ((TextBox)e.Item.FindControl("Ingredient_nameTextBox")).Text;
+
+        SqlDataSource2.Update();
+
+        DataList1.EditItemIndex = -1;
+        DataList1.DataBind();
+    }
+
+    protected void DtateList1_DeleteCommand(object source,
+        DataListCommandEventArgs e)
+    {
+        SqlDataSource2.DeleteParameters["Ingredient_id"].DefaultValue = e.CommandArgument.ToString();
+        SqlDataSource2.Delete();
+        DataList1.DataBind();
     }
 }
