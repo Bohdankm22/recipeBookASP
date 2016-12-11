@@ -18,6 +18,5 @@ public partial class Login : System.Web.UI.Page
         if (FormsAuthentication.Authenticate(Login1.UserName, Login1.Password)) {
             FormsAuthentication.RedirectFromLoginPage(Login1.UserName, false);
         }
-
     }
 }

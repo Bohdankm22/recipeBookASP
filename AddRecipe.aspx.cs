@@ -19,6 +19,7 @@ public partial class AddRecipe : PagesParent
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        SubmitedByTextBox.Text = User.Identity.Name;
     }
 
     protected void RecipeSave(object sender, EventArgs e)
