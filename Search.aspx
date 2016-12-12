@@ -42,6 +42,8 @@
 
 <%-- (c) Author Bohdan Sharipov. All rights reserved --%>
 
+        <asp:Button ID="generateJSON" runat="server" Text="Download search results" CssClass="btn btn-success" OnClick="generateJSON_Click" />
+
         <br />
 
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource4" CssClass="table table-hover table-striped" onrowcommand="gridViewRowCommand">
@@ -61,9 +63,12 @@
                 <asp:ControlParameter ControlID="DropDownList3" PropertyName="SelectedValue" Name="ingredient_name" Type="String"></asp:ControlParameter>
             </SelectParameters>
         </asp:SqlDataSource>
+
+        <asp:Button ID="Button2" runat="server" Text="Download search results" CssClass="btn btn-success" OnClick="generateJSON_Click" />
+        
     </div>
 
-    <asp:Button ID="generateJSON" runat="server" Text="Download JSON file" CssClass="btn-default" OnClick="generateJSON_Click" />
+    
 
     <%-- (c) Author Bohdan Sharipov. All rights reserved --%>
 

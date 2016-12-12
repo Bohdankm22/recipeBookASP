@@ -48,7 +48,7 @@ public partial class Search : PagesParent
         Response.Clear();
         Response.Buffer = true;
         Response.AddHeader("content-disposition",
-            "attachment;filename=DataTable.doc");
+            "attachment;filename=RecipesSearch.doc");
         Response.Charset = "";
         Response.ContentType = "application/vnd.ms-word ";
         StringWriter sw = new StringWriter();
