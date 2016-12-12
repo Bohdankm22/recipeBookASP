@@ -8,9 +8,15 @@ public class PagesParent : System.Web.UI.Page
     protected override void OnPreInit(EventArgs e)
     {
         base.OnPreInit(e);
-        if (Session["Theme"] != null)
+        HttpCookie myCookie = Request.Cookies["theme1"];
+        if (myCookie != null)
         {
-            this.Page.Theme = (string)Session["Theme"];
+            this.Theme = myCookie.Value;
+        } else
+        {
+            HttpCookie myNewCookie = new HttpCookie("theme1");
+            myNewCookie.Value = "Dark";
+            Response.Cookies.Add(myNewCookie);
         }
     }
 }

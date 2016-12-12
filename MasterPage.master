@@ -7,38 +7,57 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <asp:ContentPlaceHolder id="head" runat="server">
+    <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <link href="~/content/bootstrap.css" rel="stylesheet" />
     <link href="~/chef.png" rel="shortcut icon" type="image/x-icon" />
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/">Home</a></li>
-                        <li><a runat="server" href="~/Recipes.aspx">Recipes</a></li>
-                        
-<!-- (c) Author Bohdan Sharipov. All rights reserved -->
+        <div>
+            <div class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li><a runat="server" href="~/Default.aspx">Home</a></li>
+                            <li><a runat="server" href="~/Recipes.aspx">Recipes</a></li>
 
-                        <li><a runat="server" href="~/AddRecipe.aspx">Add recipe</a></li>
-                        <li><a runat="server" href="~/Search.aspx">Search</a></li>
-                        <asp:ContentPlaceHolder id="ContentPlaceHolderMenu" runat="server"/>
-                    </ul>
+                            <!-- (c) Author Bohdan Sharipov. All rights reserved -->
+
+                            <li><a runat="server" href="~/AddRecipe.aspx">Add recipe</a></li>
+                            <li><a runat="server" href="~/Search.aspx">Search</a></li>                            
+                            <asp:ContentPlaceHolder ID="ContentPlaceHolderMenu" runat="server" />
+                            </ul>
+                            <asp:LoginView runat="server" ViewStateMode="Disabled">
+                                <AnonymousTemplate>
+                                    <ul class="nav navbar-nav navbar-right">
+                                        <li><a runat="server" href="~/Login">Log in</a></li>
+                                    </ul>
+                                </AnonymousTemplate>
+                                <LoggedInTemplate>
+                                    <ul class="nav navbar-nav navbar-right">
+                                        <li><a> Welcome,
+                                                <asp:LoginName ID="LoginName2" runat="Server" ForeColor="#CCCCCC"></asp:LoginName>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <asp:LoginStatus ID="LoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log off" />
+                                        </li>
+                                    </ul>
+                                </LoggedInTemplate>
+                            </asp:LoginView>
+                        
+                    </div>
                 </div>
             </div>
+            <div class="container body-content">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+                <hr />
+                <footer>
+                    <p>&copy; <%: DateTime.Now.Year %> - Author: Bohdan Sharipov</p>
+                </footer>
+            </div>
         </div>
-        <div class="container body-content">
-            <asp:ContentPlaceHolder id="MainContent" runat="server"/>
-            <hr />
-            <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - Author: Bohdan Sharipov</p>
-            </footer>
-        </div>
-    </div>
     </form>
 </body>
 </html>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -31,4 +32,30 @@ public partial class Search : PagesParent
         Console.WriteLine("There is a method");
     }
 
+
+
+
+    protected void generateJSON_Click(object sender, EventArgs e)
+    {
+        DataView view = (DataView)SqlDataSource4.Select(DataSourceSelectArguments.Empty);
+        DataTable dt = view.ToTable();
+
+        GridView GridView2 = new GridView();
+        GridView2.AllowPaging = false;
+        GridView2.DataSource = dt;
+        GridView2.DataBind();
+
+        Response.Clear();
+        Response.Buffer = true;
+        Response.AddHeader("content-disposition",
+            "attachment;filename=DataTable.doc");
+        Response.Charset = "";
+        Response.ContentType = "application/vnd.ms-word ";
+        StringWriter sw = new StringWriter();
+        HtmlTextWriter hw = new HtmlTextWriter(sw);
+        GridView2.RenderControl(hw);
+        Response.Output.Write(sw.ToString());
+        Response.Flush();
+        Response.End();
+    }
 }

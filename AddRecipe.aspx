@@ -19,7 +19,7 @@
             <p>
                 <asp:Label ID="SubmitedByLabel" runat="server" Text="Submited By"></asp:Label>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <asp:TextBox ID="SubmitedByTextBox" runat="server"></asp:TextBox>
+                <asp:TextBox ID="SubmitedByTextBox" runat="server" Enabled="False"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ValidationGroup="Recipe" ErrorMessage="Please fill Submited By field" ControlToValidate="SubmitedByTextBox" SetFocusOnError="True" Display="Dynamic" />
             </p>
             <p>
