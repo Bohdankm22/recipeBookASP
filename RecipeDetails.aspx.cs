@@ -11,7 +11,7 @@ using System.Configuration;
  * All rights reserved.
  */
 
-public partial class RecipeDetails : System.Web.UI.Page
+public partial class RecipeDetails : PagesParent
 {
     protected void Page_Load(object sender, EventArgs e)
     {

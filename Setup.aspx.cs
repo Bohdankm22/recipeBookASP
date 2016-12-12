@@ -19,7 +19,10 @@ public partial class Setup : PagesParent
 
     protected void Unnamed1_Click(object sender, EventArgs e)
     {
-        Session["Theme"] = DarkTheme.Checked ? "Dark" : "Light";
-        Server.Transfer(Request.FilePath);
+        HttpCookie myNewCookie = new HttpCookie("theme1");
+        myNewCookie.Value = DarkTheme.Checked ? "Dark" : "Light";
+        Response.Cookies.Remove("theme1");
+        Response.Cookies.Add(myNewCookie);
+        Response.Redirect("~/Setup.aspx");
     }
 }

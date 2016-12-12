@@ -24,27 +24,6 @@ public partial class AddRecipe : PagesParent
 
     protected void RecipeSave(object sender, EventArgs e)
     {
-        //List<Ingredient> IngredientsList = new List<Ingredient>();
-        //double cookTime = 0.0;
-        //try
-        //{
-        //    cookTime = Double.Parse(CookingTimeTextBox.Text);
-        //} catch (Exception)
-        //{}
-        //int numbOfServ = 0;
-        //try
-        //{
-        //    numbOfServ = int.Parse(NumberOfServingsTextBox.Text);
-        //}
-        //catch (Exception)
-        //{ }
-
-        //List<Recipe> list = ((List<Recipe>)Application["RecipesList"]);
-        //list.Add(new Recipe(RecipeNameTextBox.Text, SubmitedByTextBox.Text,
-        //    CategoryTextBox.Text, cookTime, numbOfServ,
-        //    RecipeDescriptionTextBox.Text, IngredientsList));
-        //Application["RecipesList"] = list;
-
         List<Ingredient> ingreList = ListOfIngr.getIngredientsList();
 
         string cs = ConfigurationManager.ConnectionStrings["CookBookConnectionString"].ConnectionString;

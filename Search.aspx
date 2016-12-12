@@ -63,6 +63,8 @@
         </asp:SqlDataSource>
     </div>
 
+    <asp:Button ID="generateJSON" runat="server" Text="Download JSON file" CssClass="btn-default" OnClick="generateJSON_Click" />
+
     <%-- (c) Author Bohdan Sharipov. All rights reserved --%>
 
 </asp:Content>
