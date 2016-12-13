@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Security;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 public partial class Login : PagesParent
@@ -16,7 +12,7 @@ public partial class Login : PagesParent
     protected void Login1_Authenticate(object sender, AuthenticateEventArgs e)
     {
         if (FormsAuthentication.Authenticate(Login1.UserName, Login1.Password)) {
-            FormsAuthentication.RedirectFromLoginPage(Login1.UserName, false);
+           FormsAuthentication.RedirectFromLoginPage(Login1.UserName, false);
         }
     }
 }
